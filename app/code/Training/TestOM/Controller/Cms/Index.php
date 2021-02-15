@@ -12,6 +12,8 @@ class Index extends \Magento\Cms\Controller\Index\Index
 {
     private $test;
 
+    private $playWithTest;
+
     /**
      * Index constructor.
      *
@@ -26,15 +28,18 @@ class Index extends \Magento\Cms\Controller\Index\Index
         ForwardFactory $resultForwardFactory,
         ScopeConfigInterface $scopeConfig = null,
         Page $page = null,
-        Test $test
+        Test $test,
+        \Training\TestOM\Model\PlayWithTest $playWithTest
     ) {
         $this->test = $test;
+        $this->playWithTest = $playWithTest;
         parent::__construct($context, $resultForwardFactory, $scopeConfig, $page);
     }
 
     public function execute($coreRoute = null)
     {
-        $this->test->log();
+        //$this->test->log();
+        $this->playWithTest->run();
         return parent::execute($coreRoute);
     }
 }
