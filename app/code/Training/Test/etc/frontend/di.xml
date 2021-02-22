@@ -7,6 +7,6 @@
         <plugin name="training_test_overwrite_template" type="Training\Test\Plugin\Block\Template" />
     </type>
     <type name="Magento\Catalog\Controller\Product\View">
-        <plugin name="training_test_redirect_users" type="Training\Test\Plugin\Controller\Product\View" />
+        <plugin name="training_test_redirect_users" type="Training\Test\Plugin\Controller\Product\View" disabled="true" />
     </type>
 </config>
