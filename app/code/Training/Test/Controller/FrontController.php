@@ -1,5 +1,5 @@
 <?php
-namespace Training\Test\App;
+namespace Training\Test\Controller;
 
 class FrontController extends \Magento\Framework\App\FrontController
 {
