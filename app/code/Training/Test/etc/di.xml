@@ -12,4 +12,5 @@
         </arguments>
     </type>
     <preference for="Magento\Cms\Controller\Page\View" type="Training\Test\Controller\Page\View"/>
+    <preference for="Magento\Catalog\Controller\Product\View" type="Training\Test\Controller\Product\View"/>
 </config>
