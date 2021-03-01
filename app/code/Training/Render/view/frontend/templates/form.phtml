@@ -1,0 +1,12 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Training\Render\ViewModel\Form $viewModel */
+$viewModel = $block->getViewModel();
+?>
+
+<div>
+    <form action="<?= $viewModel->getSubmitUrl() ?>" method="post">
+        <input type="text" name="test_name"/>
+        <input type="submit"/>
+    </form>
+</div>
