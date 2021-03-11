@@ -1,0 +1,16 @@
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "debug": {
+                        "component": "Training_Test/js/layout-debug",
+                        "config" : {
+                            "xml": "<?= $escaper->escapeJs($block->getLayout()->getXmlString()) ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
