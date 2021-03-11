@@ -335,6 +335,7 @@ return [
         'Training_Dependency' => 1,
         'Training_Test' => 1,
         'Training_Render' => 1,
+        'Training_Js' => 1,
         'Training_AdditionalTestOM' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,

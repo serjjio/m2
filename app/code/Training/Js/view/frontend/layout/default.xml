@@ -3,7 +3,7 @@
     <body>
         <referenceContainer name="before.body.end">
             <block class="Magento\Framework\View\Element\Template" name="layout-debug"
-                   template="Training_Test::layout-debug.phtml"/>
+                   template="Training_Js::layout-debug.phtml"/>
         </referenceContainer>
     </body>
 </page>
