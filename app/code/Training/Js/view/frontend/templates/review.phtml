@@ -1,0 +1,21 @@
+<div data-bind="scope: 'random'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "random": {
+                        "component": "Training_Js/js/review",
+                        "config" : {
+                            "template" : "Training_Js/review",
+                            "url": "<?= $escaper->escapeJs($block->getUrl('render_js/review/index')) ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
