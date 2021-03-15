@@ -1,0 +1,8 @@
+<div class="count-product-box" data-bind="blockLoader: isLoading">
+    <div class="count-product">
+        <button type="button" data-bind="i18n: 'Count Product', click: getCountProduct"></button>
+        <!-- ko if: isVisible -->
+            <b data-bind="text: countProduct"></b>
+        <!-- /ko -->
+    </div>
+</div>

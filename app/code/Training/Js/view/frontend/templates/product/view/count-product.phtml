@@ -1,0 +1,22 @@
+<div data-bind="scope: 'count-product'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "count-product": {
+                        "component": "Training_Js/js/product/view/count-product",
+                        "config" : {
+                            "template" : "Training_Js/product/view/count-product",
+                            "url": "<?= $escaper->escapeJs($block->getUrl('render_js/count/index')) ?>",
+                            "productId": "<?= $escaper->escapeJs($block->getProduct()->getId()) ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
