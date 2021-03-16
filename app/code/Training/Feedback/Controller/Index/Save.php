@@ -27,6 +27,7 @@ class Save extends \Magento\Framework\App\Action\Action
                 $this->validatePost($post);
                 $feedback = $this->feedbackFactory->create();
                 $feedback->setData($post);
+                $feedback->save();
                 $this->messageManager->addSuccessMessage(
                     __('Thank you for your feedback.')
                 );
@@ -34,11 +35,11 @@ class Save extends \Magento\Framework\App\Action\Action
                 $this->messageManager->addErrorMessage(
                     __('An error occurred while processing your form. Please try again later.')
                 );
-                $result->setPath('*/*/form');
+                $result->setPath('*/form/*');
                 return $result;
             }
         }
-        return $result->setPath('*/*/index');
+        return $result->setPath('*/form/index');
 
     }
 

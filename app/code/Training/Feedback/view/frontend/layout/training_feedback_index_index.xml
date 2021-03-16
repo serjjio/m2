@@ -2,13 +2,16 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Training\Feedback\Block\Form"
-                   name="feedback_form"
-                   template="Training_Feedback::form.phtml"
-                   cacheable="false">
+            <block class="Training\Feedback\Block\FeedbackList"
+                   name="feedback_list"
+                   template="Training_Feedback::list.phtml">
                 <arguments>
                     <argument name="view_model" xsi:type="object">Training\Feedback\ViewModel\FeedbackForm</argument>
                 </arguments>
+            </block>
+            <block class="Training\Feedback\Block\FeedbackList" name="feedback_list"
+                   template="Training_Feedback::list.phtml">
+                <block class="Magento\Theme\Block\Html\Pager" name="feedback_list_pager"/>
             </block>
         </referenceContainer>
         <referenceBlock name="testargument" remove="true"/>
