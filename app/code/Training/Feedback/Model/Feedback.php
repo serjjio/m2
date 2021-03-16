@@ -5,6 +5,8 @@ namespace Training\Feedback\Model;
 
 class Feedback extends \Magento\Framework\Model\AbstractModel
 {
+    const STATUS_INACTIVE = '0';
+
     /**
      * Initialize resources
      *
