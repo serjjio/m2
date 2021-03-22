@@ -7,6 +7,9 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
 {
+    protected $_eventPrefix = 'training_feedback_collection';
+    protected $_eventObject = 'feedback_collection';
+
     /**
      * @return void
      */
