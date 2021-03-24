@@ -1,0 +1,57 @@
+<?php
+declare(strict_types=1);
+
+namespace Training\FeedbackProduct\Model\ResourceModel;
+
+class FeedbackProducts extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+{
+    /**
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_init('training_feedback_product', 'row_id');
+    }
+
+    /**
+     * @param $feedbackId
+     * @param $productIds
+     * @return $this
+     */
+    public function saveProductRelations($feedbackId, $productIds)
+    {
+        $savedProductIds = $this->loadProductRelations($feedbackId);
+        $productIdsToAdd = array_diff($productIds, $savedProductIds);
+        $productIdsToDelete = array_diff($savedProductIds, $productIds);
+        $dataToAdd = [];
+        foreach ($productIdsToAdd as $productId) {
+            $dataToAdd[] = ['feedback_id' => $feedbackId, 'product_id' => $productId];
+        }
+        if (count($dataToAdd)) {
+            $this->getConnection()->insertMultiple(
+                $this->getTable('training_feedback_product'),
+                $dataToAdd
+            );
+        }
+        if (count($productIdsToDelete)) {
+            $this->getConnection()->delete(
+                $this->getTable('training_feedback_product'),
+                ['feedback_id = ?' => $feedbackId, 'product_id IN (?)' => $productIdsToDelete]
+            );
+        }
+        return $this;
+    }
+
+    /**
+     * @param $feedbackId
+     * @return array
+     */
+    public function loadProductRelations($feedbackId)
+    {
+        $adapter = $this->getConnection();
+        $select = $adapter->select()
+            ->from($this->getTable('training_feedback_product'), 'product_id')
+            ->where('feedback_id = ?', (int)$feedbackId);
+        return $adapter->fetchCol($select);
+    }
+}

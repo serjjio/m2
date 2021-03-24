@@ -56,8 +56,6 @@ class Test extends \Magento\Framework\App\Action\Action
 
         // load item by id
         $feedback = $this->feedbackRepository->getById(9);
-        var_dump($feedback->getExtensionAttributes());
-        die();
         $this->printFeedback($feedback);
 
         // update item

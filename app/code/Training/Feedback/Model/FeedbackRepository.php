@@ -13,6 +13,7 @@ use Training\Feedback\Model\ResourceModel\Feedback as FeedbackResource;
 use Training\Feedback\Api\Data\FeedbackInterfaceFactory as FeedbackFactory;
 use Training\Feedback\Model\ResourceModel\Feedback\CollectionFactory as FeedbackCollectionFactory;
 use Magento\Framework\Api\SearchResultsInterfaceFactory;
+use Magento\Framework\Event\Manager;
 
 class FeedbackRepository implements FeedbackRepositoryInterface
 {
@@ -20,6 +21,11 @@ class FeedbackRepository implements FeedbackRepositoryInterface
      * @var FeedbackResource
      */
     private $resource;
+
+    /**
+     * @var Manager
+     */
+    private $eventManager;
 
     /**
      * @var FeedbackFactory
@@ -47,19 +53,22 @@ class FeedbackRepository implements FeedbackRepositoryInterface
      * @param FeedbackCollectionFactory $feedbackCollectionFactory
      * @param SearchResultsInterfaceFactory $searchResultsFactory
      * @param CollectionProcessorInterface $collectionProcessor
+     * @param Manager $eventManager
      */
     public function __construct(
         FeedbackResource $resource,
         FeedbackFactory $feedbackFactory,
         FeedbackCollectionFactory $feedbackCollectionFactory,
         SearchResultsInterfaceFactory $searchResultsFactory,
-        CollectionProcessorInterface $collectionProcessor
+        CollectionProcessorInterface $collectionProcessor,
+        Manager $eventManager
     ) {
         $this->resource = $resource;
         $this->feedbackFactory = $feedbackFactory;
         $this->feedbackCollectionFactory = $feedbackCollectionFactory;
         $this->searchResultsFactory = $searchResultsFactory;
         $this->collectionProcessor = $collectionProcessor;
+        $this->eventManager = $eventManager;
     }
 
     /**
@@ -96,6 +105,7 @@ class FeedbackRepository implements FeedbackRepositoryInterface
         if (!$feedback->getId()) {
             throw new NoSuchEntityException(__('Feedback with id "%1" does not exist.', $feedbackId));
         }
+        $this->eventManager->dispatch('training_feedback_load_after', ['feedback'=>$feedback]);
         return $feedback;
     }
 
