@@ -9,6 +9,8 @@ use Training\Feedback\Api\Data\FeedbackExtensionInterface;
 class Feedback extends \Magento\Framework\Model\AbstractExtensibleModel implements FeedbackInterface
 {
     const STATUS_INACTIVE = '0';
+    const STATUS_ACTIVE = '1';
+
 
     protected $_eventPrefix = 'training_feedback';
     protected $_eventObject = 'feedback';

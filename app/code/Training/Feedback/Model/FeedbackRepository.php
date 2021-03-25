@@ -105,7 +105,6 @@ class FeedbackRepository implements FeedbackRepositoryInterface
         if (!$feedback->getId()) {
             throw new NoSuchEntityException(__('Feedback with id "%1" does not exist.', $feedbackId));
         }
-        $this->eventManager->dispatch('training_feedback_load_after', ['feedback'=>$feedback]);
         return $feedback;
     }
 

@@ -70,7 +70,6 @@ class FeedbackDataLoader
      */
     private function getProductsByField($field, $value)
     {
-        print_r($value);
         if (!is_array($value) || !count($value)) {
             return [];
         }
